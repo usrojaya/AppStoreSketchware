@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+     <title>
+      SketchLaskar Design   
+     </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+     <link rel="stylesheet" href="assets/css/intro.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+      <meta name="author" content="Usro Jaya"/>
+      <meta name="description" content="web upload project sketchware"/>
+      
+  </head>
+    <body>
+        <div class="container_login">
+		
+            <div class="list_page">
+    
+                <div class="page page-1">
+                
+                   <div class="con_img">
+                
+         <img src="assets/img/bgProfile.png">
+             
+                   </div>
+              <br>
+              
+              <div class="con_text">
+                  <h2>Selamat Datang di SketchLaskar</h2>
+                  <div class="strip">
+              
+                  </div>
+                  <br>
+                <span>
+             Tempat Dimana Anda Dapat Mengunggah Proyek Sketchware Anda 
+                  dan Berdiskusi dengan pengguna lainya
+                  
+                </span>
+              </div>
+     
+              </div>
+      
+      
+                    <!--PAGE2-->
+                        <div class="page page-2">
+                             <div class="con_img">
+                 <img src="../assets/img/teman.avif">
+              </div>
+              <br>
+              
+              <div class="con_text">
+                  <h2>Temukan Inspirasi Baru</h2>
+                  <div class="strip">
+              
+                  </div>
+                  <br>
+                <span>
+              Dapatkan dukungan dari komunitas yang kuat untuk meningkatkan keterampilan pembuatan aplikasi anda        
+                </span>
+              </div>
+     
+              </div>
+   
+                     <!--PAGE -->
+              <div class="page page-3">
+                             <div class="con_img">
+                 <img src="../assets/img/unggah.avif">
+              </div>
+              <br>
+              
+              <div class="con_text">
+                  <h2>Unggah Proyek</h2>
+                  <div class="strip">
+              
+                  </div>
+                  <br>
+                <span>
+            Ayo unggah proyek anda sekarang dan dapatakan dukungan dari para profesional
+                </span>
+              </div>
+    
+                </div><!--AND LIST_PAGE-->
+      
+ 
+              <div class="from_container">
+                   <div class="dot_codinator">
+                   <div class="dot">
+                       
+                   </div>
+                   <div class="dot">
+                       
+                   </div>
+                   <div class="dot">
+                       
+                   </div>
+               </div>
+              <div class="con_button">
+                 <button type="button" class="preview" id="preview"><b><i class="fa fa-arrow-left"></i> Preview</b></button>
+                 <button type="button" class="next" id="next"><b>Next <i class="fa fa-arrow-right"></i></b></button>
+    </div>
+
+    
+  </div>
+     </div> <!--AND container_login-->
+    
+        
+        
+                    
+             
+      <script>
+let currentPage = 0;
+
+const pages = document.querySelectorAll(".page-1, .page-2, .page-3");
+const bg = document.querySelector(".content");
+
+for (let i = 0; i < pages.length; i++) {
+  pages[i].style.display = "none";
+}
+pages[currentPage].style.display = "block";
+
+document.querySelector(".next").addEventListener("click", function() {
+  pages[currentPage].style.display = "none";
+  currentPage = currentPage + 1;
+ 
+if (currentPage >= pages.length) {
+       window.location.href="index.inc.php";
+  
+currentPage = 0;
+      
+  }
+  pages[currentPage].style.display = "block";
+ 
+ updateDot();  
+});
+
+document.querySelector(".preview").addEventListener("click", function() {
+  pages[currentPage].style.display = "none";
+  currentPage = currentPage - 1;
+
+  if (currentPage < 0) {
+    currentPage = pages.length - 1;
+  }
+updateDot(); 
+  pages[currentPage].style.display = "block";
+});
+
+
+// Dapatkan semua element dot
+const dots = document.querySelectorAll(".dot");
+
+// Tambahkan event listener pada setiap dot
+dots.forEach((dot, index) => {
+  dot.addEventListener("click", function() {
+    // Ubah indeks halaman saat ini
+    currentPage = index;
+
+    // Ubah dot yang menunjukkan halaman saat ini
+    updateDot();
+  });
+});
+
+function updateDot() {
+  // Hapus class active pada semua dot
+  dots.forEach((dot) => {
+    dot.classList.remove("active");
+  });
+
+  // Tambahkan class active pada dot saat ini
+  dots[currentPage].classList.add("active");
+}
+
+updateDot();
+
+
+      </script>
+    </body>
+</html>

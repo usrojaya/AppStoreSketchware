@@ -1,0 +1,161 @@
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: lightblue;
+}
+
+/*Login.html*/
+/*Dan*/
+/*Register.html*/
+
+.container_login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: lightblue;
+ 
+}
+.container_login .from{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+}
+.container_login .from .header_login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: transparent;
+  
+}
+.header_login .title{
+    width: 100%;
+      display: flex;
+      flex-direction: column;
+    justify-content: center;
+    align-items: left; 
+    padding: 0 0 0 10px;
+    color: black;
+}
+.header_login img{
+    border-radius: 180px;
+    border: 5px solid rgba(0,0,0,0.4);
+    width: 100px;
+    height: 100px;
+    margin: 8 0px;
+}
+.header_login .title .fa{
+    color: salmon;
+    margin: 0 8px;
+}
+
+.text_welcome{
+    padding: 8 20px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: transparent;
+  flex-wrap: wrap;
+  width: 80%;
+}
+.container_login .from_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin-top: 50px;
+    background-color: transparent;
+    width: 100%;
+    
+}
+
+.container_login  #email, #password, #nama,#Upassword, #token, #newPassword{
+    width: 100%;
+    outline: none;
+    border: none;
+    height: 30px;
+    padding: 8 16px;
+    background-color: lightblue;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    font-size: 16px;
+}
+.container_login .submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    width: 100%;
+}
+.submit input{
+    background-color: #00ABFF;
+    border: none;
+    outline: none;
+    width: 120px;
+    padding:8px;
+    border-radius: 180px;
+     box-shadow: inset 0 -4em 3em rgba(0, 0, 0, 0.1), 0 0 0 1px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+     color: white;
+    
+}
+.container_login .text_sosial{
+    text-align: center;
+    background-color: lightblue;
+    margin: 8px;
+    
+}
+.container_login .text_sosial b{
+    text-align: center;
+    color: rgba(0,0,0,0.5);
+    font-size: 14px; 
+}
+
+.text_sosial .icon_sosial{
+    background-color: lightblue;
+    width: 100%;
+   
+}
+.text_sosial .icon_sosial #facebook{
+    margin: 0 10px;
+    background-color: #00ABFF;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    color: white;
+    border: none;
+    box-shadow: inset 0 -4em 3em rgba(0, 0, 0, 0.1), 0 0 0 0px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    
+}
+.text_sosial .icon_sosial #google{
+    margin: 0 10px;
+    background-color: salmon;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    color: white;
+    border: none;
+    box-shadow: inset 0 -4em 3em rgba(0, 0, 0, 0.1), 0 0 0 0px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+.text_sosial p{
+  margin-top: 50px; 
+  color: rgba(0,0,0,0.4);
+}
+.text_sosial b{
+    color: salmon;
+}
+.text_sosial a{
+    text-decoration: none;
+}

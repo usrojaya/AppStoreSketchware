@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>
+    Not Account page
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="author" content="UsroJaya"/>
+    <meta name="Description" content="Apliksi System Login"/>
+    <link rel="stylesheet" href="assets/css/style_from.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+    <div class="container_login">
+      <div class="from">
+          
+	<div class="header_login">
+				
+				<img src="assets/img/bgProfile.png" />
+			<div class="text_welcome">
+   <h1>HALLO!!.</h1>
+       
+  <p>Buat account untuk melanjutkan</p>
+ 
+			</div>
+			
+			</div> <!--AND HEADER--> 
+          
+              <div class="from_container">
+<form action="../config/Control.php" method="post">
+   <label for="nama">Nama</label>
+  <br>
+  <input type="text" id="nama" name="nama" placeholder=""><br><br>
+  <label for="email">Email</label>
+  <br>
+  <input type="email" id="email" name="email" placeholder=""><br><br>
+  <label for="password">Password</label>
+  <br>
+  <input type="password" id="password" name="password" placeholder=""><br><br>
+    <label for="password">Ulangi Password</label>
+  <br>
+  <input type="password" id="Upassword" name="Upassword" placeholder=""><br><br>
+  <div class="submit">
+    <input type="submit" value="Register" name="register">
+    
+  </div>
+</form>
+    </div><!--AND FROM CONTAINER-->
+    
+    
+         <div class="text_sosial">
+        <b>Sudah punya account? <a href="login.html">Login</a></b>
+        <p class="or_sosial">__________Or__________</p>    
+  
+   <div class="icon_sosial">
+ 
+    <button id="facebook"><i class="fa fa-facebook"></i> </button> 
+    <button id="google"><i class="fa fa-google"></i> </button>
+    </div>
+
+     </div><!--AND SOSIAL MEDIA-->  
+
+
+    
+      </div><!--AND FROM-->
+    
+     </div> <!--AND container_login-->
+    
+    <script src="assets/js/script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,317 @@
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: lightblue;
+}
+
+/*Login.html*/
+/*Dan*/
+/*Register.html*/
+.overlay{
+    width: 100%;
+    height: 100%;
+    z-index:4;
+    position: fixed;
+    display: none;
+    background-color: rgba(0,0,0,0.2);
+}
+.chat-input input{
+  box-sizing: border-box; /* tambahkan ini */
+  flex: 1; /* atur min-height */
+  display: flex;
+  padding-top: 8px;
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-bottom: 8px;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  overflow-y: auto; /* tambahkan ini */
+  width: 260px;
+  outline: none;
+  border: none;
+  
+  
+}
+
+/* The side navigation menu */
+.sidenav {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 5; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #333; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 0px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.overlay{
+    width: 100%;
+    height: 100%;
+    z-index:4;
+    position: fixed;
+    display: none;
+    background-color: rgba(0,0,0,0.2);
+}
+.sidenav .navbar-sidebar{
+display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: #fff;
+  height: 50px;
+  padding: 10 20px;
+  width: 80%;
+  
+}
+.sidenav .navbar-sidebar .fa-angle-left{
+    font-size: 28px;
+    margin-right: 30px;
+}
+.sidenav .divider{
+    margin: 30 0px;
+    width: 80%;
+    height: 1px;
+    background-color: green;
+}
+.sidenav .kosong{
+    height: 100%;
+    width: 100%;
+}
+.sidenav .navbar-sidebar .setting{
+width: 100%;
+display: flex;
+}
+.sidenav .navbar-sidebar-footer{
+display: flex;
+  align-items: center;
+  background-color: transparent;
+  color: #fff;
+  height: 120px;
+  padding: 0 20px;
+  width: 80%;
+  font-size: 18px;
+}
+.sidenav  .profile-user{
+    width: 100%;
+    height: 50px;
+    margin: 20 0px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.sidenav .profile-user img{
+    width: 35px;
+    height: 35px;
+    margin: 0 10px;
+    margin-left: 30px;
+    border-radius: 100%;
+    border: 2px solid white;
+}
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+.container_login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: lightblue;
+    overflow: hidden;
+}
+.container_login .ui{
+    background-color: #2196F3;
+     height: 250px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-image: url("../img/unggah.avif");
+}
+.container_login .ui input{
+   background-color: white; 
+   width: 90%;
+   height: 40px;
+   border-radius: 20px;
+   padding: 8px;
+   margin-top: 25px;
+   outline: none;
+   border: none;
+   box-shadow: inset 0 -4em 3em rgba(0, 0, 0, 0.1), 0 0 0 0px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+.container_login .from_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 100%;
+}
+.con_text .title{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+}
+.con_text .title h2{
+    margin: 0 20px;
+    padding: 8 0px;
+}
+.container_login .from_container .con_img{
+ 
+    
+}
+.container_login .con_text .grid-container{
+ display: grid;
+  grid-template-columns: repeat(10, 1fr); /* Mengatur 10 kolom dengan lebar sama */
+  overflow-x: auto; /* Menambahkan scrollbar horizontal */
+  width: 100%;
+  background-color: transparent;
+  padding:8 30px;
+  white-space: nowrap; /* Mencegah baris baru pada setiap item */
+  justify-content: start;
+  margin: 20  0px;
+  height: 250px;
+  scrollbar-width: none; /* Menyembunyikan scrollbar */
+}
+
+
+
+.grid-container::-webkit-scrollbar {
+  width: 0; /* Mengatur lebar scrollbar menjadi 0 pada browser yang mendukung prefix webkit */
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  margin: 8px;
+  border-radius: 10px;
+  box-shadow: inset 0 -4em 3em rgba(0, 0, 0, 0.1), 0 0 0 0px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+   overflow: hidden;
+   height: 200px;
+   width: 200px;
+}
+.grid-item img{
+    width: 100%;
+    height: 70%;
+}
+.grid-item .description{
+    font-size: 14px;
+    padding: 0 8px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    text-align: left;
+    background-color: transparent;
+}
+.grid-item .container-download .like,.comment,.unduh{
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    justify-content: center;
+    margin: 0 2px;
+    color: #424242;
+}
+.like b{
+    font-size: 8px;
+}
+.comment b{
+    font-size: 8px;
+}
+.unduh b{
+    font-size: 8px;
+}
+.grid-item .description .size{
+    font-size: 8px;
+}
+.grid-item .container-download{
+ width: 100%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 30%;
+}
+.container_login .from_container .con_img img{
+    width: 100%;
+    height: 100%;
+
+}
+.container_login .from_container .con_button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 150px;
+    background-color: transparent;
+  
+}
+.container_login  .con_sosial{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: transparent;
+  
+}
+.container_login .sosial_icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: transparent;
+  
+}
+.container_login .from_container .con_text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: transparent;
+  
+}
+

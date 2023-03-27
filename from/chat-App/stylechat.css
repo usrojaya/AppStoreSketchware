@@ -1,0 +1,337 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    padding: 0;
+    margin: 0;
+font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+/* The side navigation menu */
+.sidenav {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 5; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #333; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 0px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.overlay{
+    width: 100%;
+    height: 100%;
+    z-index:4;
+    position: fixed;
+    display: none;
+    background-color: rgba(0,0,0,0.2);
+}
+.sidenav .navbar-sidebar{
+display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: #fff;
+  height: 50px;
+  padding: 10 20px;
+  width: 80%;
+  
+}
+.sidenav .navbar-sidebar .fa-angle-left{
+    font-size: 28px;
+    margin-right: 30px;
+}
+.sidenav .divider{
+    margin: 30 0px;
+    width: 80%;
+    height: 1px;
+    background-color: green;
+}
+.sidenav .kosong{
+    height: 100%;
+    width: 100%;
+}
+.sidenav .navbar-sidebar .setting{
+width: 100%;
+display: flex;
+}
+.sidenav .navbar-sidebar-footer{
+display: flex;
+  align-items: center;
+  background-color: transparent;
+  color: #fff;
+  height: 120px;
+  padding: 0 20px;
+  width: 80%;
+  font-size: 18px;
+}
+.sidenav  .profile-user{
+    width: 100%;
+    height: 50px;
+    margin: 20 0px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.sidenav .profile-user img{
+    width: 35px;
+    height: 35px;
+    margin: 0 10px;
+    margin-left: 30px;
+    border-radius: 100%;
+    border: 2px solid white;
+}
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+}
+
+.container .navbar{
+display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  color: #fff;
+  height: 80px;
+  padding: 0 20px;
+  background-color: #333;
+  width: 100%;
+  
+}
+
+.navbar .logo {
+  flex-grow: 0;
+  flex-shrink: 0;
+  color: white;
+font-size: 30px;
+ margin: 0 20px;
+}
+
+.navbar .menu {
+    
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+   
+}
+
+.navbar .menu-item {
+   width: 100%; 
+  margin-right: 20px;
+  color: white;
+  
+  padding: 0 20px;
+text-decoration: none;
+}
+
+.navabar .menu-item:last-child {
+  margin-right: 0;
+}
+
+.navbar .menu-button {
+  flex-grow: 0;
+  flex-shrink: 0;
+color: white;
+font-size: 25px;
+margin: 0 20px;
+ 
+}
+.navbar .input-box{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding: 0 20px;
+    
+}
+.navbar .input-box p{
+    font-size: 25px;
+}
+.container .content{
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: #E2F1EF;
+}
+.container .content .name{
+ width: 100%;
+ height: 60px;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+.chat-container {
+  width: 100%;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.chat-message {
+  max-width: 70%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.right {
+  float: right;
+  clear: both;
+  background-color: #DCF8C6;
+  margin: 20 20px;
+}
+.right .status{
+    display: flex;
+width: 100%;
+align-items: center;
+}
+.status i{
+    margin-top: 4px;
+    font-size: 12px;
+    color: blue;
+ float: right;
+  clear: both;    
+}
+.status p{
+    width: 100%;
+    text-align: right;
+    padding: 0 8px;
+    margin-top: 4px;
+    font-size: 12px;
+    color: blue;
+ float: right;
+  clear: both;    
+}
+.left {
+  float: left;
+  clear: both;
+  background-color: #F5F5F5;
+  margin: 20 20px;
+}
+
+
+
+
+
+.footer-chat {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+ /* background-color: #f2f2f2;*/
+  border-top: 1px solid #ddd;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.chat-input {
+  width: 60px;
+  flex: 1;
+  margin-right: 30px;
+  position: relative;
+
+ 
+}
+
+.chat-input textarea {
+  box-sizing: border-box; /* tambahkan ini */
+  flex: 1; /* atur min-height */
+  min-height: 50px;
+  max-height: 300px;
+  display: flex;
+  padding-top: 16px;
+  padding-left: 20px;
+  padding-right: 60px;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  overflow-y: auto; /* tambahkan ini */
+  width: 100%;
+  outline: none;
+  border: none;
+  
+}
+
+.send{
+    height: 60px;
+    max-height: 300px;
+     display: flex;
+  justify-content: center;
+  align-items: center;
+   background-color: red;
+}
+.icon-send {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: #333;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-right: 40px;
+  cursor: pointer;
+     position:absolute;
+  bottom: 30;
+  right: 20;
+  z-index: 2;
+  margin-left: 30px;
+  
+}
+
+.icon-send i {
+  font-size: 20px;
+}
