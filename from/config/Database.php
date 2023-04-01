@@ -78,8 +78,9 @@ public function register($reg)
         // Enkripsi password dengan hash
         $password_encript = password_hash($password, PASSWORD_BCRYPT);
         $uPassword = $reg['Upassword'];
-        // Deteksi input tidak boleh kosong
-        $id = $this->generate_user_id($nama);
+$user_id = $this->generate_user_id($nama); // asumsikan $this merujuk pada objek kelas yang memiliki method generate_user_id()
+$GLOBALS['id'] = $user_id; // asumsikan variabel global 'id' telah didefinisikan sebelumnya
+     // Deteksi input tidak boleh kosong
         if (empty($nama)) {
             throw new Exception("Nama tidak boleh kosong");
         }elseif(empty($email)){
@@ -97,7 +98,8 @@ $alert = new Alert();
 $alert->alertMessage($this->media, $this->swite, 'error', 'Password', 'ulangi password tidak sesuai');
         exit;
     }
-    
+          
+ 
          
            // Cek user di database
             $query_cek = "SELECT * FROM users WHERE email = ? ";
@@ -109,15 +111,14 @@ $alert->alertMessage($this->media, $this->swite, 'error', 'Password', 'ulangi pa
            if($cek){
 $alert = new Alert();
 $alert->alertMessage($this->media, $this->swite, 'exist', 'Exist', 'Email sudah terdaftar');
- 
+ return false;
           exit;
                
            }
            
-           if($id == $cek['id']){
+         
       $id = $this->generate_user_id($nama);
-           }
-           
+
  $resetToken = bin2hex(random_bytes(16));
  $resetAt = date("Y-m-d H:i:s");
               
@@ -400,57 +401,83 @@ public function deleteUser($user = null) {
 //upload file
 public function uploadFile($upload){
   try{
-    $alert = new Alert();
     if(isset($_COOKIE['user'])){
-        $email = $_COOKIE['user'];
+        $nama = $_COOKIE['user'];
         //cek id 
-        $query = "SELECT * FROM users WHERE email = :email";
+        $query = "SELECT * FROM users WHERE nama = :nama";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':nama', $nama);
         $stmt->execute();
         $user = $stmt->fetch();
      
         if ($user) {
-            $alert->alertMessage($this->media, $this->swite, 'success', 'Ok', ''); 
-            // ambil data dari form
-            $basename = $upload['name'];
-            $filesize_kb = $upload['size'];
+          
+  $files = $upload;
+  $count = count($files['name']);  
+  
+  for($i = 0; $i < $count; $i++) {
+    $fileName = $files['name'][$i];
+    $fileTmpName = $files['tmp_name'][$i];
+    $fileSize = $files['size'][$i];
+    $fileType = $files['type'][$i];
+  
+              // ambil data dari form
+          $basename = $fileName;
             $img_path = '2.png';
-            $user_id = $user['id'];
-            $title = $basename;
+         $id = $this->generate_user_id($user['id']);
+           $user_id = $user['id'];
             $description = "project bagus";
             $kategori = "ui ux";
-            $created_at = "";
-          
-            
+            $created_at = null;
+$filesize_kb = round($fileSize / 1024, 2);
+$size = $filesize_kb . " KB";
             // lakukan upload file ke direktori tujuan
-            $target_dir = "../uploads/";
+            $target_dir = "../../uploads/";
             $target_file = $target_dir . $basename;
-            if (move_uploaded_file($upload["tmp_name"], $target_file)) {
+            // lakukan upload file ke direktori tujuan
+$target_dir = "../../uploads/";
+$target_file = $target_dir . $basename;
+if (move_uploaded_file($fileTmpName, $target_file)) {
+    // Menambahkan data file ke dalam tabel projects
+    $query = "INSERT INTO projects (id, id_user, title, description, kategori, created_at, size, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam('1', $id);
+    $stmt->bindParam('2', $user_id);
+    $stmt->bindParam('3', $basename);
+    $stmt->bindParam('4', $description);
+    $stmt->bindParam('5', $kategori);
+    $stmt->bindParam('6', $created_at);
+    $stmt->bindParam('7', $size);
+    $stmt->bindParam('8', $img_path);
+              
+    // Eksekusi statement SQL untuk setiap file yang diunggah
+    for($i = 0; $i < $count; $i++) {
+        $basename = $files['name'][$i];
+        $fileSize = $files['size'][$i];
+        $filesize_kb = round($fileSize / 1024, 2);
+        $size = $filesize_kb . " KB";
 
-                $alert->alertMessage($this->media, $this->swite, 'success', 'Ok', $basename); 
-                // Menambahkan data file ke dalam tabel projects
-                $query = "INSERT INTO projects  (id, title, description, kategori, created_at, size, img) VALUES (?, ?, ?, ?, ?, ?, ?)";
-                $stmt = $this->conn->prepare($query);
-                $stmt->bindParam('1', $user_id);
-                $stmt->bindParam('2', $title);
-                $stmt->bindParam('3', $description);
-                $stmt->bindParam('4', $kategori);
-                $stmt->bindParam('5', $created_at);
-                $stmt->bindParam('6', $filesize_kb);
-                $stmt->bindParam('7', $img_path);
-               
-                if ($stmt->execute()) {
-                    $alert = new Alert();
-                    $alert->alertMessage($this->media, $this->swite, 'success', 'Berhasil', 'Upload berhasil');
-                } else {
-                    error_reporting(E_ALL);
-                    ini_set('display_errors', 1);
-                }
-            } else {
-              echo "Sorry, there was an error uploading your file.";
-            }
+        if ($stmt->execute()) {
+            $alert = new Alert();
+            $alert->alertMessage($this->media, $this->swite, 'success', 'Berhasil', 'Upload berhasil');
+            
+        } else {
+            error_reporting(E_ALL);
+            ini_set('display_errors', 1);
+            return false;
         }
+    }
+} else {
+    
+                $alert = new Alert();
+$alert->alertMessage($this->media, $this->swite, 'token_failed', 'Gagal', 'Anda belum login');  
+
+            return false;
+ 
+}
+
+        }
+    }
     }
   } catch (PDOException $e) {
         echo "Upload failed: " . $e->getMessage();
@@ -460,6 +487,7 @@ public function uploadFile($upload){
     return false;
  
 }
+
 }
 }
 ?>

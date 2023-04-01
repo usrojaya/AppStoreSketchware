@@ -52,8 +52,14 @@ if(isset($_GET['isLogin'])){
 $alert->alertMessage($media, $swite, 'isLogin', 'Sudah Login', '');  
 }
 if(isset($_FILES['fileUpload'])){
+        if(isset($_COOKIE['user'])){
+        $nama = $_COOKIE['user'];
+        $alert = new Alert();
+$alert->alertMessage($media, $swite, 'isLogin', 'Sudah Login', '');
+}
   $bash->uploadFile($_FILES['fileUpload']);
-  var_dump($_FILES['fileUpload']);
+ 
+  
 }
 
 

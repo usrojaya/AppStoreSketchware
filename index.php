@@ -1,5 +1,7 @@
    <?php
 include "config/detaiProject.php";
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -10,22 +12,18 @@ include "config/detaiProject.php";
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link href="css/style.css" rel="stylesheet">
+    
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
-  <link href="css/modal.css" rel="stylesheet">
- 
-   <link href="css/style.css" rel="stylesheet">
-      <link href="css/sidenav.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="css/modal.css" rel="stylesheet">
+  <link href="css/sidenav.css" rel="stylesheet">
+
 
     </head>
     <body>
-    	  <div class="overlay-nav">
-            
-        </div>
-        
+      
 <div id="mySidenav" class="sidenav">
         <div class="navbar-sidebar">
        <i class="fa fa-angle-left"></i> 
@@ -76,6 +74,10 @@ include "config/detaiProject.php";
         </div> 
     
  </div>
+   	  <div class="overlay-nav">
+            
+        </div>
+    
         
     <div class="container">
   <div class="header">
@@ -199,31 +201,33 @@ $show->showProject('edukasi');
     <div class="modal-header">
       <span class="close">&times;</span>
       <h2>Upload Project</h2>
+
     </div>
     <div class="modal-body-bottomsheet">
+    <div class="file-preview">
+  <ul class="file-grid"></ul>
+</div>
+      <form class="upload" action="from/config/Control.php" method="post" enctype="multipart/form-data">
+<div class="input-file">
+  <input type="file" name="fileUpload[]" multiple>
+  <span class="input-file-trigger"><i class="fa fa-folder"></i></span>
+</div>
+   <input class="btnUpload" type="submit" value="Upload"></input>
+
+</form>
 <div class="grid-container-bottomsheet">
-  <?php
-  include "config/selectFile.php";
-  $select = new FileDir();
-    // direktori yang ingin ditampilkan filenya
- $select->showFile();
-  ?>
-
   </div>
 
 </div>
 
 </div>
-    <div class="modal-footer">
-</div>
+ 
   </div>
 
 </div>
-
-
 
     </div><!--CONTAINER-->
         <script src="js/app.js"></script>
- 
+
    </body>
 </html>

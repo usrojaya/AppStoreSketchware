@@ -75,3 +75,79 @@ function getCookie(cookieName) {
   // Jika cookie tidak ditemukan, return string kosong
   return '';
 }
+
+
+document.querySelector("html").classList.add('js');
+
+var fileInput = document.querySelector("input[type=file]"),  
+    button = document.querySelector(".input-file-trigger"),
+    fileGrid = document.querySelector(".file-grid");
+      
+button.addEventListener("keydown", function(event) {  
+    if (event.keyCode == 13 || event.keyCode == 32) {  
+        fileInput.focus();  
+    }  
+});
+
+button.addEventListener("click", function(event) {
+    fileInput.focus();
+    return false;
+});  
+
+// fungsi untuk menghasilkan warna acak
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r},${g},${b})`;
+}
+            
+fileInput.addEventListener("change", function(event) {
+    fileGrid.innerHTML = ""; // clear existing files
+        
+
+    for (var i = 0; i < this.files.length; i++) {
+        var file = this.files[i];
+
+        var reader = new FileReader();
+        reader.onload = (function(file) { // membuat closure untuk menyimpan variabel 'file'
+          return function(event) {
+            var item = document.createElement("li");
+            item.classList.add("file-item");
+
+
+            if (file.type.match("image.*")) {
+              var img = document.createElement("img");
+              img.src = event.target.result;
+              item.appendChild(img);
+            }
+
+// membuat elemen ikon
+const icon = document.createElement('i');
+icon.classList.add('fa', 'fa-file', 'fa-random-color'); // menambahkan kelas CSS fa-random-color
+icon.style.color = getRandomColor(); // mengubah warna ikon menggunakan nilai acak
+item.appendChild(icon);
+
+            
+            var name = document.createElement("div");
+            name.classList.add("file-name");
+            name.innerHTML = file.name; // menampilkan nama file secara lengkap
+            item.appendChild(name);
+            
+            var size = document.createElement("div");
+            size.classList.add("file-size");
+            size.innerHTML = Math.round(file.size / 1024) + " KB";
+            item.appendChild(size);
+            name.appendChild(size);
+        
+        
+        
+
+            fileGrid.appendChild(item);
+          };
+        })(file);
+
+        reader.readAsDataURL(file);
+        
+    }
+});
