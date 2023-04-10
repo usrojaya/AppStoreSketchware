@@ -411,6 +411,8 @@ public function uploadFile($upload){
         $user = $stmt->fetch();
      
         if ($user) {
+$alert = new Alert();
+ $alert->alertMessage($this->media, $this->swite, 'kategori', 'Pilih kategori', 'Upload berhasil');
           
   $files = $upload;
   $count = count($files['name']);  
@@ -459,7 +461,7 @@ if (move_uploaded_file($fileTmpName, $target_file)) {
 
         if ($stmt->execute()) {
             $alert = new Alert();
-            $alert->alertMessage($this->media, $this->swite, 'success', 'Berhasil', 'Upload berhasil');
+            $alert->alertMessage($this->media, $this->swite, 'success-upload', 'Berhasil', 'Upload berhasil');
             
         } else {
             error_reporting(E_ALL);
@@ -470,13 +472,18 @@ if (move_uploaded_file($fileTmpName, $target_file)) {
 } else {
     
                 $alert = new Alert();
-$alert->alertMessage($this->media, $this->swite, 'token_failed', 'Gagal', 'Anda belum login');  
+$alert->alertMessage($this->media, $this->swite, 'token_failed', 'Gagal', 'Upload Gagal');  
 
             return false;
  
 }
 
         }
+    }else{
+                        $alert = new Alert();
+$alert->alertMessage($this->media, $this->swite, 'token_failed', 'Gagal', 'Anda belum login');  
+
+            return false;
     }
     }
   } catch (PDOException $e) {

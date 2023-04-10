@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 <html>
     <head>
       <title>
-     PROJECT SKETCHWARE 
+     BLOGLIFE
       </title> 
 
 <meta charset="UTF-8">
@@ -215,6 +215,8 @@ $show->showProject('edukasi');
    <input class="btnUpload" type="submit" value="Upload"></input>
 
 </form>
+
+
 <div class="grid-container-bottomsheet">
   </div>
 

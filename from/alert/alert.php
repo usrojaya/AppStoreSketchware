@@ -156,7 +156,38 @@ window.location.replace('../view/home.php');
 
       </script>
      ";
-                break;      
+                break; 
+         case 'kategori':
+            
+     // Get selected categories
+  $categories = isset($_POST["category"]) ? $_POST["category"] : array();
+  echo"$media <br> $swite";
+
+  // Show switch alert with selected categories
+  echo "<script>";
+  echo "Swal.fire({
+    title: 'Selected Categories',
+    html: '" . implode(", ", $categories) . "',
+    icon: 'success',
+    showCancelButton: true,
+    confirmButtonText: 'OK',
+    cancelButtonText: 'Cancel',
+    reverseButtons: true
+  });";
+  echo "</script>"; 
+  echo' <label>
+    <input type="checkbox" name="category[]" value="education">
+    <span>Education</span>
+    <input type="checkbox" name="category[]" value="ui-ux">
+    <span>UI/UX</span>
+    <input type="checkbox" name="category[]" value="tools">
+    <span>Tools</span>
+  </label>';
+          break;      
+        case'success-upload':
+     $this->Interface($media, $swite, $respon, $text, $message, "Upload Berhasil", "success", "../../index.php",false, false);	
+      
+            break;
             default;
                 break;
         }
