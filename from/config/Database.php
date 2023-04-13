@@ -432,7 +432,11 @@ $alert = new Alert();
             $kategori = "ui ux";
             $created_at = null;
 $filesize_kb = round($fileSize / 1024, 2);
-$size = $filesize_kb . " KB";
+        if ($filesize_kb >= 1) {
+  $size = number_format($filesize_kb, 1) . " MB"; // tampilkan dalam format MB
+} else {
+  $size = number_format($filesize_kb, 1) . " KB"; // tampilkan dalam format KB
+}
             // lakukan upload file ke direktori tujuan
             $target_dir = "../../uploads/";
             $target_file = $target_dir . $basename;
@@ -452,12 +456,18 @@ if (move_uploaded_file($fileTmpName, $target_file)) {
     $stmt->bindParam('7', $size);
     $stmt->bindParam('8', $img_path);
               
-    // Eksekusi statement SQL untuk setiap file yang diunggah
-    for($i = 0; $i < $count; $i++) {
-        $basename = $files['name'][$i];
-        $fileSize = $files['size'][$i];
-        $filesize_kb = round($fileSize / 1024, 2);
-        $size = $filesize_kb . " KB";
+   //  Eksekusi statement SQL untuk setiap file yang diunggah
+  for($i = 0; $i < $count; $i++) {
+       $basename = $files['name'][$i];
+       $fileSize = $files['size'][$i];
+       $filesize_kb = round($fileSize / 1024, 2);
+       if ($filesize_kb >= 1000) {
+       $size = number_format($filesize_kb / 1024, 1) . " MB"; // tampilkan dalam format MB
+   } else {
+      $size = number_format($filesize_kb, 1) . " KB"; // tampilkan dalam format KB
+      }
+    
+
 
         if ($stmt->execute()) {
             $alert = new Alert();
@@ -466,7 +476,7 @@ if (move_uploaded_file($fileTmpName, $target_file)) {
         } else {
             error_reporting(E_ALL);
             ini_set('display_errors', 1);
-            return false;
+return false;
         }
     }
 } else {

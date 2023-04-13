@@ -32,7 +32,7 @@ ini_set('display_errors', 1);
         <br>
         <div class="profile-user">
         <img src="img/bgProfile.png">  
-        <b id="nameUser">Gusion</b>
+        <b id="nameUser"></b>
         </div>
         <br>
         <br>
@@ -53,7 +53,7 @@ ini_set('display_errors', 1);
         <br>
       <div class="navbar-sidebar">
        <i class="fa fa-database"></i> 
-       <a class="setting">Data and Storage</a>
+       <a class="setting">Data Project</a>
         </div>
         <br>
     <div class="divider">

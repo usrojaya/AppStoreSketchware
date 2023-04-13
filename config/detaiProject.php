@@ -40,7 +40,7 @@ public function showProject($category){
         echo "<div class='footer-card'>";
         echo "<div class='size'>";
         echo "<i class='fa fa-file'></i>";
-    echo "<span><b>Size : </b>". $data['size'] ."</span>";
+    echo "<span id='size'><b>Size : </b>". $data['size'] ."</span>";
         echo "</div>";
 
         echo " <div class='size'>";
@@ -79,7 +79,7 @@ foreach($newProjects as $project){
         echo "<div class='footer-card'>";
         echo "<div class='size'>";
         echo "<i class='fa fa-file'></i>";
-    echo "<span><b>Size : </b>". $project['size'] ."</span>";
+    echo "<span id='size'><b>Size : </b>". $project['size'] ."</span>";
         echo "</div>";
 
         echo " <div class='size'>";

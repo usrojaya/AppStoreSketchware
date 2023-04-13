@@ -15,6 +15,9 @@ public function showFile(){
       $filesize = filesize($dir.'/'.$file);
      $filesize_kb = round($filesize / 1024, 2);
      // Konversi ke KB dan bulatkan ke 2 angka di belakang koma
+     
+
+
       // Mendapatkan informasi tentang nama file
       $fileinfo = pathinfo($dir.'/'.$file);
       $dataFileUpload = $dir.'/'.$file;

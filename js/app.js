@@ -101,53 +101,78 @@ function getRandomColor() {
   const b = Math.floor(Math.random() * 256);
   return `rgb(${r},${g},${b})`;
 }
-            
 fileInput.addEventListener("change", function(event) {
     fileGrid.innerHTML = ""; // clear existing files
-        
 
     for (var i = 0; i < this.files.length; i++) {
         var file = this.files[i];
 
         var reader = new FileReader();
-        reader.onload = (function(file) { // membuat closure untuk menyimpan variabel 'file'
-          return function(event) {
-            var item = document.createElement("li");
-            item.classList.add("file-item");
 
+        var item = document.createElement("li");
+        item.classList.add("file-item");
 
-            if (file.type.match("image.*")) {
-              var img = document.createElement("img");
-              img.src = event.target.result;
-              item.appendChild(img);
+        if (file.type.match("image.*")) {
+            var img = document.createElement("img");
+            img.src = "https://via.placeholder.com/150"; // placeholder image
+            item.appendChild(img);
+        }
+
+        // membuat elemen ikon
+        const icon = document.createElement('i');
+        icon.classList.add('fa', 'fa-file', 'fa-random-color'); // menambahkan kelas CSS fa-random-color
+        icon.style.color = getRandomColor(); // mengubah warna ikon menggunakan nilai acak
+        item.appendChild(icon);
+
+        var name = document.createElement("div");
+        name.classList.add("file-name");
+        name.innerHTML = file.name; // menampilkan nama file secara lengkap
+        item.appendChild(name);
+
+        var sizeElement = document.createElement("div");
+        sizeElement.classList.add("file-size");
+
+        var $size = file.size;
+        var $sizeFormatted;
+
+        if ($size >= 1024) {
+            $sizeFormatted = ($size / 1024).toFixed(1) + " MB";
+        } else {
+            $sizeFormatted = ($size / 1000).toFixed(1) + " KB";
+        }
+
+        sizeElement.innerHTML = $sizeFormatted;
+        name.appendChild(sizeElement);
+
+        var progressBar = document.createElement("progress");
+        progressBar.classList.add("file-progress");
+        progressBar.max = 100;
+        item.appendChild(progressBar);
+
+        reader.onprogress = function(event) {
+            if (event.lengthComputable) {
+                var percentLoaded = Math.round((event.loaded / event.total) * 100);
+                progressBar.value = percentLoaded;
             }
+        };
 
-// membuat elemen ikon
-const icon = document.createElement('i');
-icon.classList.add('fa', 'fa-file', 'fa-random-color'); // menambahkan kelas CSS fa-random-color
-icon.style.color = getRandomColor(); // mengubah warna ikon menggunakan nilai acak
-item.appendChild(icon);
+        reader.onload = (function(item, file) { // membuat closure untuk menyimpan variabel 'item' dan 'file'
+            return function(event) {
+                if (file.type.match("image.*")) {
+                    var img = item.getElementsByTagName("img")[0];
+                    img.src = event.target.result;
+                }
 
-            
-            var name = document.createElement("div");
-            name.classList.add("file-name");
-            name.innerHTML = file.name; // menampilkan nama file secara lengkap
-            item.appendChild(name);
-            
-            var size = document.createElement("div");
-            size.classList.add("file-size");
-            size.innerHTML = Math.round(file.size / 1024) + " KB";
-            item.appendChild(size);
-            name.appendChild(size);
-        
-        
-        
+                progressBar.style.display = "none";
 
-            fileGrid.appendChild(item);
-          };
-        })(file);
+                item.classList.add("file-loaded");
+
+                console.log("File loaded: " + file.name);
+            };
+        })(item, file);
 
         reader.readAsDataURL(file);
-        
+
+        fileGrid.appendChild(item);
     }
 });
